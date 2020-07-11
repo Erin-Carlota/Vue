@@ -1,19 +1,49 @@
-# vue-demo
+### 删除Vue-cli预设
+在用户根目录下(C:\Users\你的用户名)这个地址里有一个.vuerc 文件,修改或删除配置
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 组件
+1. Props(组件之间的数据传递)
+    1. Prop 的大小写 (camelCase vs kebab-case)不敏感
+    2. Prop 类型: String  Number  Boolean Array Object Date Function Symbol
+    3. 传递静态或动态 Prop
+    4. 单向数据流:只能父传子，不能子传父
+    5. Prop 验证：
+        类型验证  空验证(是否允许为空)   默认值(缺省值)
+        注意：对象或数组默认值必须从一个工厂函数获取
+2. 自定义事件
+    子传父
+    .sync修饰符
+3. 插槽
+    1. 插槽内容：tab切换
+    2. 编译作用域:父级模板里的所有内容都是在父级作用域中编译的；子模板里的所有内容都是在子作用域中编译的。(动态数据写在哪里就在哪里声明)
+    3. 后备内容(默认值，缺省值)
+    4. 具名插槽
+    5. 作用域插槽
+    6. 解构插槽 Prop
+    7. 具名插槽的缩写 v-slot: -> #
+    8. 废弃了的语法(了解性知识)
+4. 动态组件 & 异步组件
+    1. 动态组件：keep-alive
+        include - 字符串或正则表达式。只有名称匹配的组件会被缓存。
+        exclude - 字符串或正则表达式。任何名称匹配的组件都不会被缓存。
+        max - 数字。最多可以缓存多少组件实例。
+    2. 异步组件:程序运行时不加载组件，什么时候组件被使用了，才会被加载
+5. 处理边界情况
+    $root property $parent
+6. Vue 实例
+    Vue是MVVM的模型，但是大家记住，他并不是完整的MVVM
+    M：Model
+    VM：ViewModel
+    V：View
+    MVC标准的设计模型，Angular
+    **实例生命周期钩子:生命周期函数会随着我们对程序理解越深，可参考价值越高
+7. 进入/离开 & 列表过渡
+8. 自定义指令
+    1. 全局指令
+    2. 局部指令
+    自定义指令存在三个钩子函数
+    bind：只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置。
+    inserted：被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)。
+    update：所在组件的 VNode 更新时调用，但是可能发生在其子 VNode 更新之前。指令的值可能发生了改变，也可能没有。但是你可以通过比较更新前后的值来忽略不必要的模板更新 (详细的钩子函数参数见下)。   
+    componentUpdated：指令所在组件的 VNode 及其子 VNode 全部更新后调用。
+    unbind：只调用一次，指令与元素解绑时调用。
